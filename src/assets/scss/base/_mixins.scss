@@ -1,0 +1,73 @@
+/* Converts px in rem. 
+   ex: margin: rem(10) rem(20); 
+*/
+@function rem($pixels, $context: 16) {
+	@return #{$pixels/$context}rem;
+}
+
+// Grid size
+$--grid-size: 8 !default; /* 8px */
+@function grid($number) {
+  @return rem($--grid-size*$number);
+}
+
+// Responsive Mixins
+/* These mixins are mobile first */
+@mixin untilSmall {
+  @media only screen and (max-width: $--sm) {
+    @content;
+  }
+}
+@mixin untilBigPhones() {
+  @media only screen and (max-width: $--bp-mobile-lg) {
+    @content;
+  }
+}
+@mixin untilMediumPhones() {
+  @media only screen and (max-width: $--bp-mobile-md) {
+    @content;
+  }
+}
+@mixin untilMedium {
+  @media only screen and (max-width: $--md) {
+    @content;
+  }
+}
+@mixin untilTabletLandscape() {
+  @media only screen and (max-width: $--bp-tablet-landscape) {
+    @content;
+  }
+}
+@mixin untilTabletPortrait() {
+  @media only screen and (max-width: $--bp-tablet-portrait) {
+    @content;
+  }
+}
+@mixin untilLarge  {
+  @media only screen and (max-width: $--lg) {
+    @content;
+  }
+}
+@mixin smallTblets  {
+  @media only screen and (min-width: $--sm) and (max-width: $--md) {
+    @content;
+  }
+}
+@mixin onlyDesktop  {
+  @media only screen and (min-width: $--bp-tablet-portrait + 2) {
+    @content;
+  }
+}
+
+/* box shadow mixin */
+@mixin boxShadow ($horizontal, $vertical, $blur, $size, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $horizontal $vertical $blur $size $color;
+    -moz-box-shadow: inset $horizontal $vertical $blur $size $color;
+    box-shadow: inset $horizontal $vertical $blur $size $color;
+} @else {
+    -webkit-box-shadow: $horizontal $vertical $blur $size $color;
+    -moz-box-shadow: $horizontal $vertical $blur $size $color;
+    box-shadow: $horizontal $vertical $blur $size $color;
+  }
+}

@@ -1,0 +1,27 @@
+/* Uncomment to install soho font */
+/* @import 'base/_fonts'; */
+
+@import 'base/_variables';
+@import 'base/_fonts';
+@import 'base/_helpers';
+@import 'base/_mixins';
+
+@import 'components/nav';
+@import 'components/button';
+@import 'components/card';
+@import 'components/layer';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 100%;
+  max-width: rem(900);
+  min-height: calc(100vh - 16px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

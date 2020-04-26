@@ -10,7 +10,8 @@
   margin: rem(10);
   box-shadow: none;
   transition: all .2s ease-in;
+  cursor: pointer;
   &:hover {
-    background-color: $--color-primary-light-1;
+    background-color: $--color-primary-light-2;
   }
 }

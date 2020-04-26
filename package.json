@@ -4,10 +4,11 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "NODE_ENV=development webpack-dev-server --mode development",
-    "build": "NODE_ENV=production webpack --mode production"
+    "build": "NODE_ENV=production webpack --mode production",
+    "unit": "jest --coverage",
+    "unit:watch": "jest --watch --coverage"
   },
   "keywords": [],
   "author": "",
@@ -25,9 +26,11 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "babel-jest": "^25.4.0",
     "babel-loader": "^7.1.1",
     "css-loader": "^3.5.2",
     "file-loader": "^6.0.0",
+    "jest": "^25.4.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.12.0",
     "sass": "^1.26.3",

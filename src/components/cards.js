@@ -1,6 +1,6 @@
 export default class Cards {
   constructor () {
-    this.cardsIcons = ['hippo', 'cat', 'dragon', 'fish', 'frog', 'kiwi-bird']
+    this.cardsIcons = ['dove', 'crow', 'dragon', 'fish', 'frog', 'kiwi-bird']
     this.cardsIcons = [...this.cardsIcons, ...this.cardsIcons]
     this.sortCards()
     this.cardsChecked = []
@@ -25,7 +25,7 @@ export default class Cards {
       this.cardsChecked = []
     }
     this.cardsChecked.push(icon)
-    this.matched = this.cardsChecked.length > 1 && this.cardsChecked.some((c, i, arr) => c === arr[i+1])
+    this.matched = this.cardsChecked.length > 1 && this.cardsChecked.reduce((acc, curr, i, arr) => acc === curr)
     return this.matched
   }
 }

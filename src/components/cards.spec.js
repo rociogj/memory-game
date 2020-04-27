@@ -1,6 +1,6 @@
 import Cards from './cards.js'
 
-const cards = new Cards
+const cards = new Cards()
 
 describe('Check if cards match cases', () => {
   test('checkMatch function with equal strings', () => {
@@ -28,4 +28,20 @@ describe('Check if cards match cases', () => {
     expect(result).not.toBeTruthy()
   })
 })
+
+describe('Shuffle cards returns cases', () => {
+  test('shuffleCards function returns an array which length === 12', () => {
+    let arr = ['dove', 'crow', 'dragon', 'fish', 'frog', 'kiwi-bird']
+    arr = [...arr, ...arr]
+    const result = cards.shuffleCards(arr)
+    expect(result).toHaveLength(12)
+  })
+  test('shuffleCards function returns an array of strings', () => {
+    let arr = ['dove', 'crow', 'dragon', 'fish', 'frog', 'kiwi-bird']
+    arr = [...arr, ...arr]
+    const result = cards.shuffleCards(arr).every(e => typeof e === 'string')
+    expect(result).toBeTruthy()
+  })
+})
+
 

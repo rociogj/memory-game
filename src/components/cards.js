@@ -2,17 +2,19 @@ export default class Cards {
   constructor () {
     this.cardsIcons = ['dove', 'crow', 'dragon', 'fish', 'frog', 'kiwi-bird']
     this.cardsIcons = [...this.cardsIcons, ...this.cardsIcons]
-    this.sortCards()
+    this.cardsIcons = this.shuffleCards(this.cardsIcons)
     this.cardsChecked = []
     this.matched = false
   }
   get icons () {
     return this.cardsIcons
   }
-  sortCards () {
-    this.cardsIcons.sort(() => {
-      return 0.5 - Math.random()
-    })
+  shuffleCards (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
   }
   resetCards (cards) {
     this.cardsChecked = []
@@ -25,7 +27,7 @@ export default class Cards {
       this.cardsChecked = []
     }
     this.cardsChecked.push(icon)
-    this.matched = this.cardsChecked.length > 1 && this.cardsChecked.reduce((acc, curr, i, arr) => acc === curr)
+    this.matched = this.cardsChecked.length > 1 && this.cardsChecked.reduce((acc, curr) => acc === curr)
     return this.matched
   }
 }
